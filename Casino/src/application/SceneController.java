@@ -13,6 +13,7 @@ public class SceneController implements Initializable{
 	@FXML
 	ImageView roll1, roll2, roll3;
 	ReelControl r;
+	ArrayList<ReelSymbol> symbols;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -22,7 +23,7 @@ public class SceneController implements Initializable{
 		rolls.add(roll2);
 		rolls.add(roll3);
 		
-		ArrayList<ReelSymbol> symbols = new ArrayList<ReelSymbol>();
+		symbols = new ArrayList<ReelSymbol>();
 		symbols.add(new ReelSymbol(new Image("/icons/1.png"),SymbolDescription.ANGELINA));
 		symbols.add(new ReelSymbol(new Image("/icons/2.png"),SymbolDescription.AARON));
 		symbols.add(new ReelSymbol(new Image("/icons/3.png"),SymbolDescription.CLAAS));
@@ -31,15 +32,10 @@ public class SceneController implements Initializable{
 		symbols.add(new ReelSymbol(new Image("/icons/6.png"),SymbolDescription.TIM));
 		symbols.add(new ReelSymbol(new Image("/icons/7.png"),SymbolDescription.TOBIAS));
 		symbols.add(new ReelSymbol(new Image("/icons/8.png"),SymbolDescription.XENIA));
-		symbols.add(new ReelSymbol(new Image("/icons/9.png"),SymbolDescription.oWo));
+		symbols.add(new ReelSymbol(new Image("/icons/9.png"),SymbolDescription.TEST));
 		
 		r = new ReelControl(rolls,symbols);
-		r.start();
-		r.stop();
-	}
-	@FXML
-	private void play() {
-	   System.out.println("deprecated");
+		r.rolls.get(0).setEffect(null);
 	}
 	@FXML
 	private void quit() {
@@ -50,7 +46,4 @@ public class SceneController implements Initializable{
 		r.start();
 		r.stop();
 	}
-	@Deprecated @FXML private void stop1() {}
-	@Deprecated @FXML private void stop2() {}
-	@Deprecated @FXML private void stop3() {}
 }

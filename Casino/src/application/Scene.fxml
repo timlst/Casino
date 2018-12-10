@@ -13,7 +13,6 @@
       <HBox alignment="CENTER" prefHeight="50.0" prefWidth="600.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
             <Button mnemonicParsing="false" onAction="#shuffle" text="Shuffle" />
-            <Button mnemonicParsing="false" onAction="#play" text="Print &quot;lul&quot;" />
             <Button mnemonicParsing="false" onAction="#quit" text="Quit" />
          </children>
          <BorderPane.margin>
@@ -30,16 +29,4 @@
          </children>
       </HBox>
    </center>
-   <top>
-      <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" spacing="120.0" BorderPane.alignment="CENTER">
-         <children>
-            <Button mnemonicParsing="false" onAction="#stop1" text="Stop" />
-            <Button mnemonicParsing="false" onAction="#stop2" text="Stop" />
-            <Button mnemonicParsing="false" onAction="#stop3" text="Stop" />
-         </children>
-         <BorderPane.margin>
-            <Insets />
-         </BorderPane.margin>
-      </HBox>
-   </top>
 </BorderPane>
