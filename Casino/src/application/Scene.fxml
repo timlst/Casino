@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.chart.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SceneController">
+   <bottom>
+      <HBox alignment="CENTER" prefHeight="50.0" prefWidth="600.0" spacing="10.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" onAction="#shuffle" text="Shuffle" />
+            <Button mnemonicParsing="false" onAction="#play" text="Print &quot;lul&quot;" />
+            <Button mnemonicParsing="false" onAction="#quit" text="Quit" />
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </HBox>
+   </bottom>
+   <center>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="roll1" fitHeight="150.0" fitWidth="190.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="roll2" fitHeight="150.0" fitWidth="190.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="roll3" fitHeight="150.0" fitWidth="190.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </HBox>
+   </center>
+   <top>
+      <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" spacing="120.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" onAction="#stop1" text="Stop" />
+            <Button mnemonicParsing="false" onAction="#stop2" text="Stop" />
+            <Button mnemonicParsing="false" onAction="#stop3" text="Stop" />
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </HBox>
+   </top>
+</BorderPane>
