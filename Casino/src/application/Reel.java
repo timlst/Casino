@@ -3,13 +3,10 @@ package application;
 import java.util.HashMap;
 import java.util.Map;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.scene.effect.Effect;
 import javafx.scene.effect.MotionBlur;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
-import javafx.util.Duration;
 
 public class Reel {
 	
