@@ -90,11 +90,12 @@ public class ReelControl {
 			rightSpin.stop();
 		}
 	}
-		
+	
 	private void resetBlur() {
 		for(Reel r : reels) r.resetBlur();
 	}
 	
+	@Deprecated
 	public void newRow() {
 		for(Reel r : reels) r.shift(randomSymbol());
 	}
@@ -104,10 +105,15 @@ public class ReelControl {
 		return symbols.get(randomNum);
 	}
 	
-	public List<ReelSymbol> getBoardState(){
+	private List<ReelSymbol> getBoardState(){
 		List<ReelSymbol> r = new ArrayList<ReelSymbol>();
 		for(Reel n:reels) r.add(n.getMiddle());
 		return r;
+	}
+	
+	@SuppressWarnings("unused")
+	public void handleResult() {
+		List<ReelSymbol> result = getBoardState();
 	}
 
 }
