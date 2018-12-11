@@ -5,112 +5,109 @@
 
 package application;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 
-import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.effect.MotionBlur;
-import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
 public class ReelControl {
 	
-	boolean r1,r2,r3;
-	List<ImageView> rolls;
+	List<Reel> reels;
 	List<ReelSymbol> symbols;
-	Map<ImageView,ReelSymbol> boardstate;
-	Map<ImageView, Boolean> isSpinning;
 	MotionBlur spinning;
+	Timeline leftSpin, midSpin, rightSpin;
 	
-	public ReelControl(List<ImageView> iv, List<ReelSymbol> rs){
+	public ReelControl(Reel l, Reel m, Reel r, List<ReelSymbol> sym){
 		
-		rolls = iv;
-		symbols = rs;
-		
-		boardstate = new HashMap<ImageView, ReelSymbol>();
-		isSpinning = new HashMap<ImageView, Boolean>();
+		symbols = sym;
 
-		initialize();
-		
-		spinning = new MotionBlur();
-		spinning.setRadius(25.0f);
-		spinning.setAngle(90);
+		reels = new ArrayList<Reel>();
+		reels.add(l);
+		reels.add(m);
+		reels.add(r);
+		initReels();
 	}
 	
-	private void initialize() {
-		for(ImageView i : rolls) {
-			isSpinning.put(i, false);
-			int randomNum = ThreadLocalRandom.current().nextInt(0, symbols.size());
-			ReelSymbol newSymbol = symbols.get(randomNum);
-			show(i,newSymbol);
-		}
+	public void startSpinning() {
+		resetBlur();
+		for(Reel r:reels) startSpin(r);
 	}
-	public String getBoardstate() {
-		String o = "";
-		for (ReelSymbol value : boardstate.values()) {
-		    o+=value.getDescription()+" ";
-		}
-		return o;
+	public void stopSpinning() {
+		int t = 500;
+		KeyFrame kf1 = new KeyFrame(Duration.millis(t/2),e->stopSpin(reels.get(0)));
+		KeyFrame kf2 = new KeyFrame(Duration.millis(2*t),e->stopSpin(reels.get(1)));
+		KeyFrame kf3 = new KeyFrame(Duration.millis(3*t),e->stopSpin(reels.get(2)));
+	    Timeline s = new Timeline(kf1, kf2, kf3);
+	    s.play();
 	}
 	
-	public void start() {
-		for(ImageView i : rolls) {
-			i.setEffect(spinning);
-			isSpinning.put(i, true);
+	
+	private void initReels() {
+		for(Reel r:reels) {
+			r.showIn(r.top,randomSymbol());
+			r.showIn(r.middle,randomSymbol());
+			r.showIn(r.bottom,randomSymbol());
+
 		}
-		Timeline t = new Timeline(new KeyFrame(Duration.millis(60),ae -> {
-			for(ImageView i:rolls) {
-				if(isSpinning.get(i)) nextRandomSymbol(i);
-			}
-		}));
-		t.setCycleCount(Animation.INDEFINITE);
+	}
+	
+	private void startSpin(Reel r) {
+		r.toggleBlur();
+		Timeline t = new Timeline(new KeyFrame(Duration.millis(20),ae -> r.shift(randomSymbol())));
+
+		if(r.equals(reels.get(0)))  leftSpin = t;
+		else if(r.equals(reels.get(1))) midSpin = t;
+		else if(r.equals(reels.get(2))) rightSpin = t;
+			
+		t.setCycleCount(-1);
 		t.play();
 	}
 	
-	
-	public void stop() {
-		int t = ThreadLocalRandom.current().nextInt(500, 1000);
-		KeyFrame kf1 = new KeyFrame(Duration.millis(t),e->stopReel(0));
-		t+=ThreadLocalRandom.current().nextInt(500, 1000);
-		KeyFrame kf2 = new KeyFrame(Duration.millis(t),e->stopReel(1));
-		t+=ThreadLocalRandom.current().nextInt(500, 1000);
-		KeyFrame kf3 = new KeyFrame(Duration.millis(t),e->stopReel(2));
-
-	    Timeline timeline = new Timeline(kf1, kf2, kf3);
-	    
-	    timeline.play();
-	    timeline.setOnFinished(e->{
-	    	for(ImageView i : rolls) {
-	    		i.setEffect(null);
-    		}
-	    });
+	private void stopSpin(Reel r) {
+		stopSpinAnimation(r);
+		Timeline s = new Timeline(new KeyFrame(Duration.millis(30),ae -> { 
+			r.decreaseBlur(1.5f);
+			r.shift(randomSymbol());
+		}
+		));
+		s.setCycleCount(20);
+		s.play();
+		s.setOnFinished(x->{stopSpinAnimation(r);r.toggleBlur();});
 	}
 	
-	@SuppressWarnings("unused")
-	private void nextSymbol(ImageView i) {
-		int p = symbols.indexOf(boardstate.get(i));
-		ReelSymbol next = symbols.get((p+1)%(symbols.size()));
-		show(i,next);
+	private void stopSpinAnimation(Reel r) {
+		if(r.equals(reels.get(0))) {
+			leftSpin.stop();
+		}
+		else if(r.equals(reels.get(1))) {
+			midSpin.stop();
+		}
+		else if(r.equals(reels.get(2))) {
+			rightSpin.stop();
+		}
+	}
+		
+	private void resetBlur() {
+		for(Reel r : reels) r.resetBlur();
 	}
 	
-	private void nextRandomSymbol(ImageView i) {
+	public void newRow() {
+		for(Reel r : reels) r.shift(randomSymbol());
+	}
+	
+	private ReelSymbol randomSymbol() {
 		int randomNum = ThreadLocalRandom.current().nextInt(0, symbols.size());
-		ReelSymbol next = symbols.get(randomNum);
-		if(next.equals(boardstate.get(i))) nextRandomSymbol(i);
-		else show(i,next);
+		return symbols.get(randomNum);
 	}
 	
-	public void show(ImageView i, ReelSymbol r) {
-		i.setImage(r.getImage());		
-		boardstate.put(i, r);
+	public List<ReelSymbol> getBoardState(){
+		List<ReelSymbol> r = new ArrayList<ReelSymbol>();
+		for(Reel n:reels) r.add(n.getMiddle());
+		return r;
 	}
-	private void stopReel(int i) {
-		ImageView reel = rolls.get(i);
-		isSpinning.put(reel, false);
-		reel.setEffect(null);
-	}
+
 }

@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SceneController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SceneController">
    <bottom>
       <HBox alignment="CENTER" prefHeight="50.0" prefWidth="600.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
@@ -21,11 +21,29 @@
       </HBox>
    </bottom>
    <center>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fx:id="roll1" fitHeight="150.0" fitWidth="190.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="roll2" fitHeight="150.0" fitWidth="190.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="roll3" fitHeight="150.0" fitWidth="190.0" pickOnBounds="true" preserveRatio="true" />
+            <VBox fx:id="reelLeft" alignment="CENTER" prefHeight="200.0" prefWidth="270.0">
+               <children>
+                  <ImageView fitHeight="175.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="175.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="175.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </VBox>
+            <VBox fx:id="reelMiddle" alignment="CENTER" prefHeight="200.0" prefWidth="270.0">
+               <children>
+                  <ImageView fitHeight="175.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="175.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="175.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </VBox>
+            <VBox fx:id="reelRight" alignment="CENTER" prefHeight="200.0" prefWidth="270.0">
+               <children>
+                  <ImageView fitHeight="175.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="175.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="175.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </VBox>
          </children>
       </HBox>
    </center>
