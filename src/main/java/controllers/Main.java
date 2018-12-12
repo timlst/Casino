@@ -13,7 +13,7 @@ public class Main extends Application{
   MainMenuController mainMenuController;
   PopUpMenuController popUpMenuController;
 
-  private static String WELCOME_TEXT = "This is a Casino.\nYou can loose a lot of money here.\nBut it is much cooler than playing Arcade-Games.";
+  private static String WELCOME_TEXT = "This is a Casino.\nYou can lose a lot of money here.\nBut it is much cooler than playing Arcade-Games.";
 
   @Override
   public void start(Stage primaryStage) throws Exception{
