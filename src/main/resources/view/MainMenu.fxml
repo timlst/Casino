@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../css/Background.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controllers.MainMenuController">
+<BorderPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controllers.MainMenuController">
    <center>
       <GridPane alignment="CENTER" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -28,7 +28,7 @@
                <children>
                   <Button fx:id="bjButton" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#bjButtonClicked" text="Black Jack">
                      <graphic>
-                        <Button mnemonicParsing="false" onAction="#bjHelpButtonClicked" text="Button" />
+                        <Button mnemonicParsing="false" onAction="#bjHelpButtonClicked" text="?" />
                      </graphic>
                   </Button>
                </children>
@@ -37,7 +37,7 @@
                <children>
                   <Button fx:id="oabButton" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#oabButtonClicked" text="One-Armed-Bandit">
                      <graphic>
-                        <Button mnemonicParsing="false" onAction="#oabHelpButtonClicked" text="Button" />
+                        <Button mnemonicParsing="false" onAction="#oabHelpButtonClicked" text="?" />
                      </graphic>
                   </Button>
                </children>
@@ -46,7 +46,7 @@
                <children>
                   <Button fx:id="rouletteButton" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#rouletteButtonClicked" text="Roulette">
                      <graphic>
-                        <Button mnemonicParsing="false" onAction="#rouletteHelpButtonClicked" text="Button" />
+                        <Button mnemonicParsing="false" onAction="#rouletteHelpButtonClicked" text="?" />
                      </graphic>
                   </Button>
                </children>
@@ -55,7 +55,7 @@
                <children>
                   <Button fx:id="homeworkButton" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#homeworkButtonClicked" text="Homework-Simulator">
                      <graphic>
-                        <Button mnemonicParsing="false" onAction="#homeworkHelpButtonClicked" text="Button" />
+                        <Button mnemonicParsing="false" onAction="#homeworkHelpButtonClicked" text="?" />
                      </graphic>
                   </Button>
                </children>

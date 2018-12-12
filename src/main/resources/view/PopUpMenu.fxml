@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controllers.PopUpMenuController">
    <center>
-      <Label fx:id="infoLabel" text="InfoText" textFill="#b20f0f" BorderPane.alignment="CENTER" />
+      <Label fx:id="infoLabel" alignment="CENTER" text="InfoText" textFill="#b20f0f" BorderPane.alignment="CENTER" />
    </center>
    <top>
       <Label text="Casino World" textFill="#b20f0f" BorderPane.alignment="CENTER">
@@ -22,14 +21,10 @@
       </Label>
    </top>
    <bottom>
-      <Button fx:id="closeButton" mnemonicParsing="false" text="Close" BorderPane.alignment="CENTER">
+      <Button fx:id="closeButton" mnemonicParsing="false" onAction="#closeButtonClicked" text="Close" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets bottom="20.0" />
          </BorderPane.margin>
       </Button>
    </bottom>
-   <stylesheets>
-      <URL value="@../css/Background.css" />
-      <URL value="@../css/Button.css" />
-   </stylesheets>
 </BorderPane>
