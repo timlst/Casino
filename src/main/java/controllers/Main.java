@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 
 public class Main extends Application{
 
-  Scene mainMenu, popUpMenu;
+  Scene mainMenu, popUpMenu, oab;
   MainMenuController mainMenuController;
   PopUpMenuController popUpMenuController;
 
@@ -32,6 +32,13 @@ public class Main extends Application{
     popUpMenuController.setReturnScene(mainMenu);
     mainMenuController.setPopUpMenuScene(popUpMenu);
     mainMenuController.setPopUpMenuController(popUpMenuController);
+
+    //OAB
+    loader = new FXMLLoader();
+    Pane oabPane = loader.load(getClass().getResource("/main/resources/view/Scene.fxml").openStream());
+    oab = new Scene(oabPane);
+
+    mainMenuController.setOABScene(oab);
 
     primaryStage.setTitle("Casino");
     primaryStage.setScene(popUpMenu);

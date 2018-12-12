@@ -14,7 +14,7 @@ public class MainMenuController{
   public Button rouletteButton;
   public Button homeworkButton;
 
-  private Scene popUpMenuScene;
+  private Scene popUpMenuScene, oabScene;
   private PopUpMenuController popUpMenuController;
 
   private static String OAB_HELP = "Let the bandit spin and stop each roller with a button.\n"+
@@ -29,13 +29,11 @@ public class MainMenuController{
   }
 
   public void oabButtonClicked(){
-
+    show(oabScene);
   }
   public void oabHelpButtonClicked(){
     popUpMenuController.setInfoText(OAB_HELP);
-    Stage rootStage = (Stage) oabButton.getScene().getWindow();
-    rootStage.setScene(popUpMenuScene);
-    rootStage.show();
+    show(popUpMenuScene);
   }
   public void rouletteButtonClicked(){
 
@@ -61,7 +59,17 @@ public class MainMenuController{
     this.popUpMenuScene = popUpMenuScene;
   }
 
+  public void setOABScene(Scene oabScene){
+    this.oabScene = oabScene;
+  }
+
   public void setPopUpMenuController(PopUpMenuController popUpMenuController){
     this.popUpMenuController = popUpMenuController;
+  }
+
+  private void show(Scene scene){
+    Stage rootStage = (Stage) oabButton.getScene().getWindow();
+    rootStage.setScene(scene);
+    rootStage.show();
   }
 }
