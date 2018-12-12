@@ -11,6 +11,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.scene.effect.Bloom;
 import javafx.util.Duration;
 
 public class ReelControl {
@@ -19,6 +20,7 @@ public class ReelControl {
 	public Reel l,m,r;
 	List<ReelSymbol> symbols;
 	Map<Reel,Boolean> spinning;
+	Timeline winline;
 
 	public ReelControl(Reel l, Reel m, Reel r, List<ReelSymbol> sym){
 
@@ -45,6 +47,7 @@ public class ReelControl {
 	 * Resettet den Blur und startet alle Walzen (wird gleichzeitig in Spinning Map geloggt)
 	 */
 	public void startSpinning() {
+		if(winline!=null) winline.stop();
 		for(Reel r:reels) {
 			r.resetBlur();
 			startSpin(r);
@@ -90,6 +93,7 @@ public class ReelControl {
 		s.setOnFinished(x->{
 			r.toggleBlur();
 			spinning.put(r, false);
+			if(!isRunning()) handleResult();
 		});
 	}
 
@@ -117,6 +121,7 @@ public class ReelControl {
 	@SuppressWarnings("unused")
 	public void handleResult() {
 			List<ReelSymbol> result = getBoardState(); //Kann null sein wenn das Ding gerade noch dreht
+			winBlink();
 	}
 
 	/*
@@ -124,5 +129,20 @@ public class ReelControl {
 	 */
 	public boolean isRunning() {
 		return spinning.containsValue(true);
+	}
+	
+	private void winBlink() {
+		Bloom b = new Bloom(0.9);
+		KeyFrame kf1 = new KeyFrame(Duration.millis(100),x->{
+			for(Reel r:reels) {
+			r.middle.setEffect(b);
+		}});
+		KeyFrame kf2 = new KeyFrame(Duration.millis(200),x->{
+			for(Reel r:reels) {
+			r.middle.setEffect(null);
+		}});
+		winline = new Timeline(kf1,kf2);
+		winline.setCycleCount(10);
+		winline.play();
 	}
 }

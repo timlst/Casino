@@ -12,7 +12,7 @@ import main.java.oab.ReelControl;
 import main.java.oab.ReelSymbol;
 import main.java.oab.Reel;
 
-public class SceneController implements Initializable{
+public class OABController implements Initializable{
 
 	@FXML
 	VBox reelLeft, reelMiddle, reelRight;
