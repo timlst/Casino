@@ -6,20 +6,21 @@
 package application;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.scene.effect.MotionBlur;
 import javafx.util.Duration;
 
 public class ReelControl {
 	
 	List<Reel> reels;
+	Reel l,m,r;
 	List<ReelSymbol> symbols;
-	MotionBlur spinning;
-	Timeline leftSpin, midSpin, rightSpin;
+	Map<Reel,Boolean> spinning;
 	
 	public ReelControl(Reel l, Reel m, Reel r, List<ReelSymbol> sym){
 		
@@ -29,75 +30,58 @@ public class ReelControl {
 		reels.add(l);
 		reels.add(m);
 		reels.add(r);
+		
+		this.l = l;
+		this.m = m;
+		this.r = r;
+		
+		spinning = new HashMap<Reel,Boolean>();
+		spinning.put(l,false);
+		spinning.put(m,false);
+		spinning.put(r,false);
+		
 		initReels();
 	}
 	
 	public void startSpinning() {
-		resetBlur();
-		for(Reel r:reels) startSpin(r);
+		for(Reel r:reels) {
+			r.resetBlur(); 
+			startSpin(r); 
+			spinning.put(r, true);
+		}
 	}
-	public void stopSpinning() {
-		int t = 500;
-		KeyFrame kf1 = new KeyFrame(Duration.millis(t/2),e->stopSpin(reels.get(0)));
-		KeyFrame kf2 = new KeyFrame(Duration.millis(2*t),e->stopSpin(reels.get(1)));
-		KeyFrame kf3 = new KeyFrame(Duration.millis(3*t),e->stopSpin(reels.get(2)));
-	    Timeline s = new Timeline(kf1, kf2, kf3);
-	    s.play();
-	}
-	
-	
+
 	private void initReels() {
 		for(Reel r:reels) {
 			r.showIn(r.top,randomSymbol());
 			r.showIn(r.middle,randomSymbol());
 			r.showIn(r.bottom,randomSymbol());
-
 		}
 	}
 	
 	private void startSpin(Reel r) {
 		r.toggleBlur();
 		Timeline t = new Timeline(new KeyFrame(Duration.millis(20),ae -> r.shift(randomSymbol())));
-
-		if(r.equals(reels.get(0)))  leftSpin = t;
-		else if(r.equals(reels.get(1))) midSpin = t;
-		else if(r.equals(reels.get(2))) rightSpin = t;
-			
 		t.setCycleCount(-1);
 		t.play();
+		r.spinningAnimation = t;
 	}
 	
-	private void stopSpin(Reel r) {
-		stopSpinAnimation(r);
+	public void stopSpin(Reel r) {
+		if(!spinning.get(r)) return;
 		Timeline s = new Timeline(new KeyFrame(Duration.millis(30),ae -> { 
-			r.decreaseBlur(1.5f);
+			r.decreaseBlur(3.0f);
 			r.shift(randomSymbol());
 		}
 		));
-		s.setCycleCount(20);
+		s.setCycleCount(10);
 		s.play();
-		s.setOnFinished(x->{stopSpinAnimation(r);r.toggleBlur();});
-	}
-	
-	private void stopSpinAnimation(Reel r) {
-		if(r.equals(reels.get(0))) {
-			leftSpin.stop();
-		}
-		else if(r.equals(reels.get(1))) {
-			midSpin.stop();
-		}
-		else if(r.equals(reels.get(2))) {
-			rightSpin.stop();
-		}
-	}
-	
-	private void resetBlur() {
-		for(Reel r : reels) r.resetBlur();
-	}
-	
-	@Deprecated
-	public void newRow() {
-		for(Reel r : reels) r.shift(randomSymbol());
+		r.spinningAnimation.stop();
+		r.spinningAnimation = s;
+		s.setOnFinished(x->{
+			r.toggleBlur();
+			spinning.put(r, false);
+		});
 	}
 	
 	private ReelSymbol randomSymbol() {
@@ -105,7 +89,8 @@ public class ReelControl {
 		return symbols.get(randomNum);
 	}
 	
-	private List<ReelSymbol> getBoardState(){
+	private List<ReelSymbol> getBoardState() {
+		if(isRunning()) return null;
 		List<ReelSymbol> r = new ArrayList<ReelSymbol>();
 		for(Reel n:reels) r.add(n.getMiddle());
 		return r;
@@ -113,7 +98,10 @@ public class ReelControl {
 	
 	@SuppressWarnings("unused")
 	public void handleResult() {
-		List<ReelSymbol> result = getBoardState();
+			List<ReelSymbol> result = getBoardState(); //Kann null sein wenn das Ding gerade noch dreht
 	}
-
+	
+	public boolean isRunning() {
+		return spinning.containsValue(true);
+	}
 }

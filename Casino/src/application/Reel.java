@@ -3,6 +3,7 @@ package application;
 import java.util.HashMap;
 import java.util.Map;
 
+import javafx.animation.Timeline;
 import javafx.scene.effect.Effect;
 import javafx.scene.effect.MotionBlur;
 import javafx.scene.image.ImageView;
@@ -15,6 +16,7 @@ public class Reel {
 	Map<ImageView, ReelSymbol> reelState;
 	boolean blurOn;
 	MotionBlur mb;
+	public Timeline spinningAnimation;
 	
 	public Reel(VBox v) {
 		views = v;

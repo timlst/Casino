@@ -21,15 +21,17 @@ public class SceneController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 			
 		symbols = new ArrayList<ReelSymbol>();
-		symbols.add(new ReelSymbol(new Image("/icons/1.png"),ReelSymbol.SymbolDescription.ANGELINA));
-		symbols.add(new ReelSymbol(new Image("/icons/2.png"),ReelSymbol.SymbolDescription.AARON));
-		symbols.add(new ReelSymbol(new Image("/icons/3.png"),ReelSymbol.SymbolDescription.CLAAS));
-		symbols.add(new ReelSymbol(new Image("/icons/4.png"),ReelSymbol.SymbolDescription.HANNES));
-		symbols.add(new ReelSymbol(new Image("/icons/5.png"),ReelSymbol.SymbolDescription.JOSCHUA));
-		symbols.add(new ReelSymbol(new Image("/icons/6.png"),ReelSymbol.SymbolDescription.TIM));
-		symbols.add(new ReelSymbol(new Image("/icons/7.png"),ReelSymbol.SymbolDescription.TOBIAS));
-		symbols.add(new ReelSymbol(new Image("/icons/8.png"),ReelSymbol.SymbolDescription.XENIA));
-		symbols.add(new ReelSymbol(new Image("/icons/9.png"),ReelSymbol.SymbolDescription.TEST));
+		
+		symbols.add(ReelSymbol.AARON);
+		symbols.add(ReelSymbol.ANGELINA);
+		symbols.add(ReelSymbol.CLAAS);
+		symbols.add(ReelSymbol.HANNES);
+		symbols.add(ReelSymbol.JOSCHUA);
+		symbols.add(ReelSymbol.TEST);
+		symbols.add(ReelSymbol.TIM);
+		symbols.add(ReelSymbol.TOBIAS);
+		symbols.add(ReelSymbol.XENIA);
+		for(ReelSymbol s:symbols) System.out.println(s);
 		
 		Reel left = new Reel(reelLeft);
 		Reel middle = new Reel(reelMiddle);
@@ -44,8 +46,19 @@ public class SceneController implements Initializable{
 	}
 	@FXML
 	private void shuffle() {
-		if(spinning) r.stopSpinning();
-		else r.startSpinning();
-		spinning ^= true;
+		if(!r.isRunning()) r.startSpinning();
+	}
+	
+	@FXML
+	private void stopL() {
+		r.stopSpin(r.l);
+	}
+	@FXML
+	private void stopM() {
+		r.stopSpin(r.m);
+	}
+	@FXML
+	private void stopR() {
+		r.stopSpin(r.r);
 	}
 }
