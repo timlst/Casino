@@ -1,8 +1,6 @@
 /*
- * RollDisplay ist eine Klasse um die Rollen des Spielautomaten besser zu managen: Ein RollDisplay Objekt speichert jeweils die zugehörige Anzeige (ImageView) sowie das derzeit angezeigte Bild als ReelSymbol-Objekt
- * @author Tim Storm
+ * Diese Klasse verwaltet alle Walzen, das Starten und Stoppen wird alles hier verwaltet
  */
-
 package application;
 
 import java.util.ArrayList;
@@ -43,6 +41,9 @@ public class ReelControl {
 		initReels();
 	}
 	
+	/*
+	 * Resettet den Blur und startet alle Walzen (wird gleichzeitig in Spinning Map geloggt)
+	 */
 	public void startSpinning() {
 		for(Reel r:reels) {
 			r.resetBlur(); 
@@ -50,7 +51,9 @@ public class ReelControl {
 			spinning.put(r, true);
 		}
 	}
-
+	/*
+	 * Füllt alle Walzen mit Symbolen
+	 */
 	private void initReels() {
 		for(Reel r:reels) {
 			r.showIn(r.top,randomSymbol());
@@ -59,6 +62,9 @@ public class ReelControl {
 		}
 	}
 	
+	/*
+	 * Macht das eigentliche Drehen mit einer unendlichen Timeline die im Reel-Objekt gespeichert wird
+	 */
 	private void startSpin(Reel r) {
 		r.toggleBlur();
 		Timeline t = new Timeline(new KeyFrame(Duration.millis(20),ae -> r.shift(randomSymbol())));
@@ -67,6 +73,9 @@ public class ReelControl {
 		r.spinningAnimation = t;
 	}
 	
+	/*
+	 * Timeline im Objekt wird gestoppt (sofern die Rolle überhaupt dreht), dann neue TimeLine gestartet die das Langsamerwerden simuliert
+	 */
 	public void stopSpin(Reel r) {
 		if(!spinning.get(r)) return;
 		Timeline s = new Timeline(new KeyFrame(Duration.millis(30),ae -> { 
@@ -84,11 +93,17 @@ public class ReelControl {
 		});
 	}
 	
+	/*
+	 * Zufälliges neues Symbol das auf der Walze auftaucht
+	 */
 	private ReelSymbol randomSymbol() {
 		int randomNum = ThreadLocalRandom.current().nextInt(0, symbols.size());
 		return symbols.get(randomNum);
 	}
 	
+	/*
+	 * Gibt Liste der derzeitigen Mittellinie zurück - null wenn noch am Laufen
+	 */
 	private List<ReelSymbol> getBoardState() {
 		if(isRunning()) return null;
 		List<ReelSymbol> r = new ArrayList<ReelSymbol>();
@@ -96,11 +111,17 @@ public class ReelControl {
 		return r;
 	}
 	
+	/*
+	 * Unimplementiert WIP
+	 */
 	@SuppressWarnings("unused")
 	public void handleResult() {
 			List<ReelSymbol> result = getBoardState(); //Kann null sein wenn das Ding gerade noch dreht
 	}
 	
+	/*
+	 * Prüft ob gerade eine der Walzen läuft
+	 */
 	public boolean isRunning() {
 		return spinning.containsValue(true);
 	}

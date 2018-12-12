@@ -1,3 +1,7 @@
+/*
+ * Eine Walze wird dargestellt - bestehend aus drei übereinander stehenden ImageViews
+ */
+
 package application;
 
 import java.util.HashMap;
@@ -30,16 +34,26 @@ public class Reel {
 		blurOn=false;
 	}
 	
+	/*
+	 * Aktualisiert Mapping
+	 * Zeigt bild im zugehörigen Slot
+	 */
 	public void showIn(ImageView i, ReelSymbol r) {
 		reelState.put(i, r);
 		i.setImage(r.getImage());
 	}
 	
+	/*
+	 * Für den Fall das aktualisiert wird aber nicht neu gesetzt
+	 */
 	private void refreshView(ImageView i) {
 		ReelSymbol x = reelState.get(i);
 		i.setImage(x.getImage());
 	}
 	
+	/*
+	 * Setzt ein neues Symbol oben ein und schiebt alles nach unten
+	 */
 	public void shift(ReelSymbol r) {
 		ReelSymbol newMid = reelState.put(top, r);
 		ReelSymbol newBot = reelState.put(middle, newMid);
@@ -50,6 +64,9 @@ public class Reel {
 		refreshView(bottom);
 	}
 	
+	/*
+	 * Schaltet Blur für alle ImageViews an/aus
+	 */
 	public void toggleBlur() {
 		for (ImageView key : reelState.keySet()) {
 			Object o = blurOn?null:mb;
@@ -58,12 +75,21 @@ public class Reel {
 		blurOn = !blurOn;
 	}
 	
+	/*
+	 * Geht wieder zum "Standard"-Blur der die Bewegung simuliert
+	 */
 	public void resetBlur() {
 		mb = new MotionBlur(90,45.0f);
 	}
+	/*
+	 * Blur wird "langsamer" gemacht
+	 */
 	public void decreaseBlur(float n) {
 		mb.setRadius(mb.getRadius()-n);
 	}
+	/*
+	 * Mittleres Walzensymbol wird zurückgegeben
+	 */
 	public ReelSymbol getMiddle() {
 		return reelState.get(middle);
 	}
