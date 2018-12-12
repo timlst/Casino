@@ -3,6 +3,7 @@ package main.java.oab;
 import java.util.HashMap;
 import java.util.Map;
 
+import javafx.animation.Timeline;
 import javafx.scene.effect.Effect;
 import javafx.scene.effect.MotionBlur;
 import javafx.scene.image.ImageView;
@@ -15,6 +16,7 @@ public class Reel {
 	Map<ImageView, ReelSymbol> reelState;
 	boolean blurOn;
 	MotionBlur mb;
+	public Timeline spinningAnimation;
 
 	public Reel(VBox v) {
 		views = v;
@@ -28,16 +30,26 @@ public class Reel {
 		blurOn=false;
 	}
 
+	/*
+	 * Aktualisiert Mapping
+	 * Zeigt bild im zugehoerigen Slot
+	 */
 	public void showIn(ImageView i, ReelSymbol r) {
 		reelState.put(i, r);
 		i.setImage(r.getImage());
 	}
 
+	/*
+	 * Fuer den Fall das aktualisiert wird aber nicht neu gesetzt
+	 */
 	private void refreshView(ImageView i) {
 		ReelSymbol x = reelState.get(i);
 		i.setImage(x.getImage());
 	}
 
+	/*
+	 * Setzt ein neues Symbol oben ein und schiebt alles nach unten
+	 */
 	public void shift(ReelSymbol r) {
 		ReelSymbol newMid = reelState.put(top, r);
 		ReelSymbol newBot = reelState.put(middle, newMid);
@@ -48,6 +60,9 @@ public class Reel {
 		refreshView(bottom);
 	}
 
+	/*
+	 * Schaltet Blur fuer alle ImageViews an/aus
+	 */
 	public void toggleBlur() {
 		for (ImageView key : reelState.keySet()) {
 			Object o = blurOn?null:mb;
@@ -56,12 +71,21 @@ public class Reel {
 		blurOn = !blurOn;
 	}
 
+	/*
+	 * Geht wieder zum "Standard"-Blur der die Bewegung simuliert
+	 */
 	public void resetBlur() {
 		mb = new MotionBlur(90,45.0f);
 	}
+	/*
+	 * Blur wird "langsamer" gemacht
+	 */
 	public void decreaseBlur(float n) {
 		mb.setRadius(mb.getRadius()-n);
 	}
+	/*
+	 * Mittleres Walzensymbol wird zurueckgegeben
+	 */
 	public ReelSymbol getMiddle() {
 		return reelState.get(middle);
 	}

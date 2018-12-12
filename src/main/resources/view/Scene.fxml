@@ -8,41 +8,63 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controllers.SceneController">
-   <bottom>
-      <HBox alignment="CENTER" prefHeight="50.0" prefWidth="600.0" spacing="10.0" BorderPane.alignment="CENTER">
-         <children>
-            <Button mnemonicParsing="false" onAction="#shuffle" text="Shuffle" />
-            <Button mnemonicParsing="false" onAction="#quit" text="Quit" />
-         </children>
-         <BorderPane.margin>
-            <Insets />
-         </BorderPane.margin>
-      </HBox>
-   </bottom>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="578.0" prefWidth="631.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controllers.SceneController">
    <center>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" pickOnBounds="false" prefHeight="605.0" prefWidth="870.0" BorderPane.alignment="CENTER">
          <children>
-            <VBox fx:id="reelLeft" alignment="CENTER" prefHeight="200.0" prefWidth="270.0">
+            <VBox fx:id="reelLeft" alignment="CENTER" prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <ImageView fitHeight="175.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fitHeight="175.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fitHeight="175.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Button layoutX="74.0" layoutY="40.0" mnemonicParsing="false" onAction="#stopL" text="Stop" />
+                     </children>
+                  </AnchorPane>
                </children>
+               <HBox.margin>
+                  <Insets top="50.0" />
+               </HBox.margin>
             </VBox>
-            <VBox fx:id="reelMiddle" alignment="CENTER" prefHeight="200.0" prefWidth="270.0">
+            <VBox fx:id="reelMiddle" alignment="CENTER" prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <ImageView fitHeight="175.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fitHeight="175.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fitHeight="175.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Button layoutX="74.0" layoutY="40.0" mnemonicParsing="false" onAction="#stopM" text="Stop" />
+                     </children>
+                  </AnchorPane>
                </children>
+               <HBox.margin>
+                  <Insets top="50.0" />
+               </HBox.margin>
             </VBox>
-            <VBox fx:id="reelRight" alignment="CENTER" prefHeight="200.0" prefWidth="270.0">
+            <VBox fx:id="reelRight" alignment="CENTER" prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <ImageView fitHeight="175.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fitHeight="175.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fitHeight="175.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Button layoutX="74.0" layoutY="40.0" mnemonicParsing="false" onAction="#stopR" text="Stop" />
+                     </children>
+                  </AnchorPane>
                </children>
+               <HBox.margin>
+                  <Insets top="50.0" />
+               </HBox.margin>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="620.0" prefWidth="123.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#shuffle" text="Shuffle" />
+                  <Button mnemonicParsing="false" onAction="#quit" text="Quit" />
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
             </VBox>
          </children>
       </HBox>

@@ -1,49 +1,43 @@
 /*
- * Eine Hilfsklasse um jedes Element dass auf der Rolle angezeigt werden kann darzustellen:
- * Ein ReelSymbol besteht jeweils aus einem Bild und einem Bezeichner aus der Aufzaehlung SymbolDescription
+ *  Eine Reihe von Konstanten die jeweils ein Symbol darstellt welches auf den Walzen auftauchen kann
+ * 	Ein neues Walzensymbol mit Pfad der Bilddatei und Punkten erstellen (siehe unten)
+ *  @author Tim
  */
 
 package main.java.oab;
 
 import javafx.scene.image.Image;
 
-public class ReelSymbol {
+public enum ReelSymbol {
 
-	Image img;
-	SymbolDescription kopf;
+	AARON(3,new Image("/main/resources/images/1.png")),
+	ANGELINA(1,new Image("/main/resources/images/2.png")),
+	CLAAS(1, new Image("/main/resources/images/3.png")),
+	HANNES(2, new Image("/main/resources/images/4.png")),
+	JOSCHUA(5,new Image("/main/resources/images/5.png")),
+	TIM(1,new Image("/main/resources/images/6.png")),
+	TOBIAS(4,new Image("/main/resources/images/7.png")),
+	TEST(69,new Image("/main/resources/images/8.png")),
+	XENIA(2,new Image("/main/resources/images/9.png"));
 
-	public ReelSymbol(Image i, SymbolDescription s){
+	private final Image img;
+	private final int points;
+
+	ReelSymbol(int p, Image i){
 		img = i;
-		kopf = s;
+		points = p;
 	}
-
+	/*
+	 *@return Gibt ein Bild in Form eines Image Objekts zurueck
+	 */
 	public Image getImage() {
 		return img;
 	}
-	public SymbolDescription getDescription() {
-		return kopf;
+	/*
+	 *@return Gibt die Punkte die dem Walzensymbol zugeordnet sind zurueck
+	 */
+	public int getPoints() {
+		return points;
 	}
 
-	public enum SymbolDescription{
-
-		AARON(3),
-		ANGELINA(1),
-		CLAAS(1),
-		HANNES(2),
-		JOSCHUA(5),
-		TIM(1),
-		TOBIAS(4),
-		TEST(69),
-		XENIA(2);
-
-		private final int points;
-
-		SymbolDescription(int i){
-			this.points = i;
-		}
-
-		int getPoints() {
-			return points;
-		}
-	}
 }
