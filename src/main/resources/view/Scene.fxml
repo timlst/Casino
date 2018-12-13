@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.chart.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="578.0" prefWidth="631.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controllers.OABController">
+<BorderPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="578.0" prefWidth="631.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controllers.OABController">
    <center>
       <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
@@ -23,7 +28,7 @@
                         <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
                         <AnchorPane prefHeight="200.0" prefWidth="200.0">
                            <children>
-                              <Button layoutX="74.0" layoutY="40.0" mnemonicParsing="false" onAction="#stopL" text="Stop" />
+                              <Button id="redButton" layoutX="74.0" layoutY="40.0" mnemonicParsing="false" onAction="#stopL" text="Stop" />
                            </children>
                         </AnchorPane>
                      </children>
@@ -38,7 +43,7 @@
                         <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
                         <AnchorPane prefHeight="200.0" prefWidth="200.0">
                            <children>
-                              <Button layoutX="74.0" layoutY="40.0" mnemonicParsing="false" onAction="#stopM" text="Stop" />
+                              <Button id="redButton" layoutX="74.0" layoutY="40.0" mnemonicParsing="false" onAction="#stopM" text="Stop" />
                            </children>
                         </AnchorPane>
                      </children>
@@ -53,7 +58,7 @@
                         <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
                         <AnchorPane prefHeight="200.0" prefWidth="200.0">
                            <children>
-                              <Button layoutX="74.0" layoutY="40.0" mnemonicParsing="false" onAction="#stopR" text="Stop" />
+                              <Button id="redButton" layoutX="74.0" layoutY="40.0" mnemonicParsing="false" onAction="#stopR" text="Stop" />
                            </children>
                         </AnchorPane>
                      </children>
@@ -66,7 +71,7 @@
                         <Pane layoutX="-1.0" prefHeight="578.0" prefWidth="100.0">
                            <children>
                               <Button fx:id="spin" defaultButton="true" disable="true" layoutX="24.0" layoutY="172.0" mnemonicParsing="false" onAction="#shuffle" text="Spin it" />
-                              <Button layoutX="19.0" layoutY="539.0" mnemonicParsing="false" onAction="#quit" text="Quit" />
+                              <Button id="redButton" layoutX="19.0" layoutY="539.0" mnemonicParsing="false" onAction="#quit" text="Quit" />
                               <Pane layoutY="14.0" prefHeight="79.0" prefWidth="100.0">
                                  <children>
                                     <Text layoutX="12.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Punktzahl:">
