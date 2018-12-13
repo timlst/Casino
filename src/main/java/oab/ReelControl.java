@@ -152,7 +152,7 @@ public class ReelControl {
 				}
 				else if (multipl == 0) freeSpin += 4;
 				else gameScore += jackpot;
-			} else gameScore+=l.getPoints()+m.getPoints()+r.getPoints();*/
+			}*/
 			
 			//ANMERKUNG TIM: Ich verstehe das Konzept noch nicht so ganz: Man gewinnt nur wenn drei gleiche kommen? Das ist seeeehr unwahrscheinlich tbh
 			//Temporäre Gewinnmethode

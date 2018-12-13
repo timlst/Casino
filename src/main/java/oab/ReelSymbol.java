@@ -11,7 +11,7 @@ import javafx.scene.image.Image;
 public enum ReelSymbol {
 
 	//Werte sind geändert (2,2,2,5,5,10,0,69,1000)
-	//Werte sind wieder geändert: Multiplikatoren Idee implementiert
+	//Werte sind wieder geändert: Multiplikatoren Idee implementiert, I guess?
 	
 	AARON(0.55,new Image("/main/resources/images/1.png")),
 	ANGELINA(0.85,new Image("/main/resources/images/2.png")),
@@ -20,8 +20,7 @@ public enum ReelSymbol {
 	JOSCHUA(0.4,new Image("/main/resources/images/5.png")),
 	TIM(1.75,new Image("/main/resources/images/6.png")),
 	TOBIAS(1.05,new Image("/main/resources/images/7.png")),
-	//TEST(69,new Image("/main/resources/images/8.png")),
-	XENIA(0.7,new Image("/main/resources/images/9.png"));
+	XENIA(0.7,new Image("/main/resources/images/8.png"));
 
 	private final Image img;
 	private final double points;
