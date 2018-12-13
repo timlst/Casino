@@ -10,15 +10,16 @@ import javafx.scene.image.Image;
 
 public enum ReelSymbol {
 
-	AARON(3,new Image("/main/resources/images/1.png")),
-	ANGELINA(1,new Image("/main/resources/images/2.png")),
-	CLAAS(1, new Image("/main/resources/images/3.png")),
-	HANNES(2, new Image("/main/resources/images/4.png")),
+	//Werte sind geändert (2,2,2,5,5,10,0,69,1000)
+	AARON(2,new Image("/main/resources/images/1.png")),
+	ANGELINA(2,new Image("/main/resources/images/2.png")),
+	CLAAS(2, new Image("/main/resources/images/3.png")),
+	HANNES(5, new Image("/main/resources/images/4.png")),
 	JOSCHUA(5,new Image("/main/resources/images/5.png")),
-	TIM(1,new Image("/main/resources/images/6.png")),
-	TOBIAS(4,new Image("/main/resources/images/7.png")),
+	TIM(10,new Image("/main/resources/images/6.png")),
+	TOBIAS(0,new Image("/main/resources/images/7.png")),
 	TEST(69,new Image("/main/resources/images/8.png")),
-	XENIA(2,new Image("/main/resources/images/9.png"));
+	XENIA(1000,new Image("/main/resources/images/9.png"));
 
 	private final Image img;
 	private final int points;

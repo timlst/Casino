@@ -21,8 +21,11 @@ public class ReelControl {
 	List<ReelSymbol> symbols;
 	Map<Reel,Boolean> spinning;
 	Timeline winline;
+	//public int gameScore;
+	//public int freeSpin = 0; 
 
-	public ReelControl(Reel l, Reel m, Reel r, List<ReelSymbol> sym){
+
+	public ReelControl(Reel l, Reel m, Reel r, List<ReelSymbol> sym, /*int einsatz, int jackpot*/){
 
 		symbols = sym;
 
@@ -122,6 +125,20 @@ public class ReelControl {
 	public void handleResult() {
 			List<ReelSymbol> result = getBoardState(); //Kann null sein wenn das Ding gerade noch dreht
 			winBlink();
+		/*	ReelSymbol l = result.get(0);
+			ReelSymbol m = result.get(1);
+			ReelSymbol r = result.get(2);
+			if(l == m && m == r)
+			{
+				int multipl = l.getDescription.getPoints();
+				if(multipl != 0 || multipl != 1000)
+				{
+					gameScore = gameScore + einsatz*multipl;
+				}
+				else if (multipl == 0) freeSpin += 4;
+				else gameScore += jackpot;
+			
+		*/	
 	}
 
 	/*
