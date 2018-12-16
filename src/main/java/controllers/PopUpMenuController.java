@@ -8,13 +8,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.fxml.FMXL;
 
 public class PopUpMenuController{
 
   private Scene mainMenu;
-
-  public Button closeButton;
-  public Label infoLabel;
+  @FXML
+  private Button closeButton;
+  @FXML
+  private Label infoLabel;
 
   private Scene returnScene;
 
