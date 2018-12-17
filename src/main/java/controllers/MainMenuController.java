@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.fxml.FXML;
+import javafx.event.ActionEvent;
 
 public class MainMenuController{
   @FXML
@@ -33,8 +34,9 @@ public class MainMenuController{
 
   }
 
-  public void oabButtonClicked(){
-    show(oabScene);
+  public void oabButtonClicked(ActionEvent event){
+    if(event.getTarget() == oabButton)
+      show(oabScene);
   }
   public void oabHelpButtonClicked(){
     popUpMenuController.setInfoText(OAB_HELP);
