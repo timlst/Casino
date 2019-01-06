@@ -9,9 +9,10 @@ import javafx.stage.Stage;
 
 public class Main extends Application{
 
-  Scene mainMenu, popUpMenu, oab;
+  Scene startScene, mainMenu, popUpMenu, oab;
   MainMenuController mainMenuController;
   PopUpMenuController popUpMenuController;
+  AnimationController startAnimationController;
 
   private static String WELCOME_TEXT = "This is a Casino.\nYou can lose a lot of money here.\nBut it is much cooler than playing Arcade-Games.";
 
@@ -29,9 +30,16 @@ public class Main extends Application{
     popUpMenuController = loader.getController();
     popUpMenuController.setInfoText(WELCOME_TEXT);
 
+    //start Scene
+    loader = new FXMLLoader();
+    Pane startPane = loader.load(getClass().getResource("/main/resources/view/StartAnimation.fxml").openStream());
+    startScene = new Scene(startPane);
+    startAnimationController = loader.getController();
+
     popUpMenuController.setReturnScene(mainMenu);
     mainMenuController.setPopUpMenuScene(popUpMenu);
     mainMenuController.setPopUpMenuController(popUpMenuController);
+    startAnimationController.setNext(popUpMenu);
 
     //OAB
     loader = new FXMLLoader();
@@ -41,8 +49,9 @@ public class Main extends Application{
     mainMenuController.setOABScene(oab);
 
     primaryStage.setTitle("Casino");
-    primaryStage.setScene(popUpMenu);
+    primaryStage.setScene(startScene);
     primaryStage.show();
+    startAnimationController.animate();
   }
 
   public static void main(String[] args){
