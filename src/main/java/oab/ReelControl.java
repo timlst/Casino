@@ -26,16 +26,16 @@ public class ReelControl {
 	Timeline winline;
 	Label showPoints;
 	TextField betInput;
-	
+
 	//Game Logic Attribute
 	public Integer gameScore;
 	int activeBet;
-	int freeSpin = 0; 
+	int freeSpin = 0;
 	int jackpot;
 
 
 	public ReelControl(Reel l, Reel m, Reel r, List<ReelSymbol> sym, Label p, TextField t, int points/*,int einsatz, int jackpot*/){
-		
+
 		gameScore = points;
 		showPoints = p;
 		betInput = t;
@@ -153,10 +153,10 @@ public class ReelControl {
 				else if (multipl == 0) freeSpin += 4;
 				else gameScore += jackpot;
 			}*/
-			
+
 			//ANMERKUNG TIM: Ich verstehe das Konzept noch nicht so ganz: Man gewinnt nur wenn drei gleiche kommen? Das ist seeeehr unwahrscheinlich tbh
-			//Temporäre Gewinnmethode
-			//Deswegen ist es jetzt so dass jede Person einen Multiplikator gibt, alle 3 Walzen werden addiert, durch 3 geteilt und anschließend mal den Einsatz zurückgegeben
+			//Temporaere Gewinnmethode
+			//Deswegen ist es jetzt so dass jede Person einen Multiplikator gibt, alle 3 Walzen werden addiert, durch 3 geteilt und anschliessend mal den Einsatz zurueckgegeben
 			double mult = (l.getPoints()+m.getPoints()+r.getPoints())/3;
 			//System.out.println(mult);
 			refreshGamescore((int)(mult*activeBet));
@@ -168,7 +168,7 @@ public class ReelControl {
 	public boolean isRunning() {
 		return spinning.containsValue(true);
 	}
-	
+
 	private void winBlink() {
 		Bloom b = new Bloom(0.3);
 		KeyFrame kf1 = new KeyFrame(Duration.millis(100),x->{
@@ -183,7 +183,7 @@ public class ReelControl {
 		winline.setCycleCount(5);
 		winline.play();
 	}
-	
+
 	private void refreshPoints() {
 		showPoints.setText(gameScore.toString());
 	}
