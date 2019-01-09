@@ -6,6 +6,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.Screen;
+import javafx.geometry.Rectangle2D;
 
 public class Main extends Application{
 
@@ -40,13 +42,28 @@ public class Main extends Application{
     mainMenuController.setPopUpMenuScene(popUpMenu);
     mainMenuController.setPopUpMenuController(popUpMenuController);
     startAnimationController.setNext(popUpMenu);
-
     //OAB
     loader = new FXMLLoader();
     Pane oabPane = loader.load(getClass().getResource("/main/resources/view/Scene.fxml").openStream());
     oab = new Scene(oabPane);
 
+    popUpMenu.getStylesheets().addAll(getClass().getResource("/main/resources/css/application.css").toExternalForm());
+    mainMenu.getStylesheets().addAll(getClass().getResource("/main/resources/css/application.css").toExternalForm());
+    oab.getStylesheets().addAll(getClass().getResource("/main/resources/css/application.css").toExternalForm());
+
+    popUpMenuController.setReturnScene(mainMenu);
+    mainMenuController.setPopUpMenuScene(popUpMenu);
+    mainMenuController.setPopUpMenuController(popUpMenuController);
+
     mainMenuController.setOABScene(oab);
+
+    Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
+
+    //set Stage boundaries to visible bounds of the main screen
+    primaryStage.setX(primaryScreenBounds.getMinX());
+    primaryStage.setY(primaryScreenBounds.getMinY());
+    primaryStage.setWidth(primaryScreenBounds.getWidth());
+    primaryStage.setHeight(primaryScreenBounds.getHeight());
 
     primaryStage.setTitle("Casino");
     primaryStage.setScene(startScene);

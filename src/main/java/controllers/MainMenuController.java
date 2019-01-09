@@ -7,12 +7,18 @@ package main.java.controllers;
 import javafx.scene.control.Button;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.fxml.FXML;
+import javafx.event.ActionEvent;
 
 public class MainMenuController{
-  public Button bjButton;
-  public Button oabButton;
-  public Button rouletteButton;
-  public Button homeworkButton;
+  @FXML
+  private Button bjButton;
+  @FXML
+  private Button oabButton;
+  @FXML
+  private Button rouletteButton;
+  @FXML
+  private Button homeworkButton;
 
   private Scene popUpMenuScene, oabScene;
   private PopUpMenuController popUpMenuController;
@@ -28,8 +34,9 @@ public class MainMenuController{
 
   }
 
-  public void oabButtonClicked(){
-    show(oabScene);
+  public void oabButtonClicked(ActionEvent event){
+    if(event.getTarget() == oabButton)
+      show(oabScene);
   }
   public void oabHelpButtonClicked(){
     popUpMenuController.setInfoText(OAB_HELP);
