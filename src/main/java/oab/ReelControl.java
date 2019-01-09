@@ -118,27 +118,26 @@ public class ReelControl {
 		return r;
 	}
 
-	/*
-	 * Unimplementiert WIP
-	 */
-	@SuppressWarnings("unused")
-	public void handleResult() {
+	public void handleResult(int bet) {
 			List<ReelSymbol> result = getBoardState(); //Kann null sein wenn das Ding gerade noch dreht
+			Double mult = auswertung(result);
+			if(mult == null) return;
 			winBlink();
-		/*	ReelSymbol l = result.get(0);
-			ReelSymbol m = result.get(1);
-			ReelSymbol r = result.get(2);
-			if(l == m && m == r)
-			{
-				int multipl = l.getDescription.getPoints();
-				if(multipl != 0 || multipl != 1000)
-				{
-					gameScore = gameScore + einsatz*multipl;
-				}
-				else if (multipl == 0) freeSpin += 4;
-				else gameScore += jackpot;
-			
-		*/	
+			refreshGamescore((int)(mult*bet));
+	}
+	
+	private Double auswertung(List<ReelSymbol> result){
+		if(result==null) return null;
+		ReelSymbol l = result.get(0);
+		ReelSymbol m = result.get(1);
+		ReelSymbol r = result.get(2);
+		if(l.equals(m) && m.equals(r)){
+			return l.getThree();
+		}
+		else if(l.equals(m) || m.equals(r)){
+			return m.getTwo();
+		}
+		else return null;
 	}
 
 	/*
