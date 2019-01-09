@@ -6,6 +6,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.Screen;
+import javafx.geometry.Rectangle2D;
 
 public class Main extends Application{
 
@@ -43,6 +45,14 @@ public class Main extends Application{
     mainMenuController.setPopUpMenuController(popUpMenuController);
 
     mainMenuController.setOABScene(oab);
+
+    Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
+
+    //set Stage boundaries to visible bounds of the main screen
+    primaryStage.setX(primaryScreenBounds.getMinX());
+    primaryStage.setY(primaryScreenBounds.getMinY());
+    primaryStage.setWidth(primaryScreenBounds.getWidth());
+    primaryStage.setHeight(primaryScreenBounds.getHeight());
 
     primaryStage.setTitle("Casino");
     primaryStage.setScene(popUpMenu);

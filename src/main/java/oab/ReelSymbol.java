@@ -10,7 +10,7 @@ import javafx.scene.image.Image;
 
 public enum ReelSymbol {
 
-	//Werte sind geeandert (2,2,2,5,5,10,0,69,1000)
+	//Werte sind geaendert (2,2,2,5,5,10,0,69,1000)
 	//Werte sind wieder geaendert: Multiplikatoren Idee implementiert, I guess?
 
 	AARON(0.55,new Image("/main/resources/images/1.png")),

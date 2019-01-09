@@ -17,16 +17,16 @@
 
 <BorderPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="578.0" prefWidth="631.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controllers.OABController">
    <center>
-      <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <StackPane BorderPane.alignment="CENTER">
          <children>
             <HBox alignment="CENTER" pickOnBounds="false" prefHeight="605.0" prefWidth="870.0">
                <children>
                   <VBox fx:id="reelLeft" alignment="CENTER" prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
-                        <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
-                        <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                        <ImageView pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="rectangleAnchorLeft" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView pickOnBounds="true" preserveRatio="true" />
+                        <AnchorPane>
                            <children>
                               <Button id="redButton" layoutX="74.0" layoutY="40.0" mnemonicParsing="false" onAction="#stopL" text="Stop" />
                            </children>
@@ -38,10 +38,10 @@
                   </VBox>
                   <VBox fx:id="reelMiddle" alignment="CENTER" prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
-                        <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
-                        <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                        <ImageView pickOnBounds="true" preserveRatio="true" />
+                        <ImageView pickOnBounds="true" preserveRatio="true" />
+                        <ImageView pickOnBounds="true" preserveRatio="true" />
+                        <AnchorPane>
                            <children>
                               <Button id="redButton" layoutX="74.0" layoutY="40.0" mnemonicParsing="false" onAction="#stopM" text="Stop" />
                            </children>
@@ -51,12 +51,12 @@
                         <Insets top="50.0" />
                      </HBox.margin>
                   </VBox>
-                  <VBox fx:id="reelRight" alignment="CENTER" prefHeight="200.0" prefWidth="200.0">
+                  <VBox fx:id="reelRight" alignment="CENTER">
                      <children>
-                        <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
-                        <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
-                        <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                        <ImageView pickOnBounds="true" preserveRatio="true" />
+                        <ImageView pickOnBounds="true" preserveRatio="true" />
+                        <ImageView pickOnBounds="true" preserveRatio="true" />
+                        <AnchorPane>
                            <children>
                               <Button id="redButton" layoutX="74.0" layoutY="40.0" mnemonicParsing="false" onAction="#stopR" text="Stop" />
                            </children>
@@ -98,7 +98,7 @@
                   </AnchorPane>
                </children>
             </HBox>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="150.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" width="500.0" StackPane.alignment="CENTER">
+            <Rectangle fx:id="rectangle" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="150.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" width="500.0" StackPane.alignment="CENTER">
                <StackPane.margin>
                   <Insets bottom="20.0" left="25.0" right="125.0" />
                </StackPane.margin>
