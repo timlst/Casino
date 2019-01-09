@@ -11,22 +11,35 @@ import java.util.concurrent.ThreadLocalRandom;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.effect.Bloom;
 import javafx.util.Duration;
 
 public class ReelControl {
 
+	//Attribute zur Verwaltung des Visuellen
 	List<Reel> reels;
 	public Reel l,m,r;
 	List<ReelSymbol> symbols;
 	Map<Reel,Boolean> spinning;
 	Timeline winline;
-	//public int gameScore;
-	//public int freeSpin = 0; 
+	Label showPoints;
+	TextField betInput;
+
+	//Game Logic Attribute
+	public Integer gameScore;
+	int activeBet;
+	int freeSpin = 0;
+	int jackpot;
 
 
-	public ReelControl(Reel l, Reel m, Reel r, List<ReelSymbol> sym, /*int einsatz, int jackpot*/){
+	public ReelControl(Reel l, Reel m, Reel r, List<ReelSymbol> sym, Label p, TextField t, int points/*,int einsatz, int jackpot*/){
 
+		gameScore = points;
+		showPoints = p;
+		betInput = t;
+		refreshPoints();
 		symbols = sym;
 
 		reels = new ArrayList<Reel>();
@@ -49,8 +62,10 @@ public class ReelControl {
 	/*
 	 * Resettet den Blur und startet alle Walzen (wird gleichzeitig in Spinning Map geloggt)
 	 */
-	public void startSpinning() {
+	public void startSpinning(int bet) {
 		if(winline!=null) winline.stop();
+		refreshGamescore(-bet);
+		activeBet = bet;
 		for(Reel r:reels) {
 			r.resetBlur();
 			startSpin(r);
@@ -96,7 +111,7 @@ public class ReelControl {
 		s.setOnFinished(x->{
 			r.toggleBlur();
 			spinning.put(r, false);
-			if(!isRunning()) handleResult();
+			if(!isRunning()) handleResult(activeBet);
 		});
 	}
 
@@ -117,6 +132,7 @@ public class ReelControl {
 		for(Reel n:reels) r.add(n.getMiddle());
 		return r;
 	}
+
 
 	public void handleResult(int bet) {
 			List<ReelSymbol> result = getBoardState(); //Kann null sein wenn das Ding gerade noch dreht
@@ -146,9 +162,9 @@ public class ReelControl {
 	public boolean isRunning() {
 		return spinning.containsValue(true);
 	}
-	
+
 	private void winBlink() {
-		Bloom b = new Bloom(0.9);
+		Bloom b = new Bloom(0.3);
 		KeyFrame kf1 = new KeyFrame(Duration.millis(100),x->{
 			for(Reel r:reels) {
 			r.middle.setEffect(b);
@@ -158,7 +174,18 @@ public class ReelControl {
 			r.middle.setEffect(null);
 		}});
 		winline = new Timeline(kf1,kf2);
-		winline.setCycleCount(10);
+		winline.setCycleCount(5);
 		winline.play();
+	}
+
+	private void refreshPoints() {
+		showPoints.setText(gameScore.toString());
+	}
+	public boolean hasFreeSpin() {
+		return freeSpin>0;
+	}
+	private void refreshGamescore(int n) {
+		gameScore += n;
+		refreshPoints();
 	}
 }

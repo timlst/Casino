@@ -4,12 +4,6 @@
  *  @author Tim
  */
 
-/*
- *  Eine Reihe von Konstanten die jeweils ein Symbol darstellt welches auf den Walzen auftauchen kann
- * 	Ein neues Walzensymbol mit Pfad der Bilddatei und Punkten erstellen (siehe unten)
- *  @author Tim
- */
-
 package main.java.oab;
 
 import javafx.scene.image.Image;

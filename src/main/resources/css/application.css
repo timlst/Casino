@@ -1,1 +1,39 @@
-/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+#redButton{
+  -fx-background-color:
+        #800000,
+        linear-gradient(#ff0000 0%, #b30000 20%, #990000 100%),
+        linear-gradient(#e60000, #660000),
+        radial-gradient(center 50% 0%, radius 100%, rgba(179,0,0,0.9), rgba(51,0,0,0));
+    -fx-background-radius: 5,4,3,5;
+    -fx-background-insets: 0,1,2,0;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-font-family: "Arial";
+    -fx-text-fill: linear-gradient(white, #d0d0d0);
+    -fx-font-size: 18px;
+    -fx-padding: 10 20 10 20;
+}
+
+#background{
+  -fx-background-color:
+    #132013,
+    radial-gradient(center 50% 50%, radius 100%, #004d1a, #113b11, #0a100a),
+    radial-gradient(center 50% 50%, radius 100%, rgba(200, 200, 200,0.15), rgba(0, 0, 0, 0.15));
+}
+
+.label{
+  -fx-font-family: "Arial";
+  -fx-text-fill: #800000;
+  -fx-font-size: 20px;
+}
+
+#textRed{
+  -fx-font: 20px Arial;
+  -fx-fill: #800000
+}
+
+#heading{
+  -fx-font-family: "Arial";
+  -fx-text-fill: #800000;
+  -fx-font-size: 36px;
+}
