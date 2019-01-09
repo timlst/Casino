@@ -9,9 +9,8 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
-<BorderPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controllers.MainMenuController">
+<BorderPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controllers.MainMenuController">
    <center>
       <GridPane alignment="CENTER" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -26,7 +25,7 @@
          <children>
             <VBox alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
-                  <Button fx:id="bjButton" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#bjButtonClicked" text="Black Jack">
+                  <Button id="redButton" fx:id="bjButton" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#bjButtonClicked" text="Black Jack">
                      <graphic>
                         <Button mnemonicParsing="false" onAction="#bjHelpButtonClicked" text="?" />
                      </graphic>
@@ -35,7 +34,7 @@
             </VBox>
             <VBox alignment="CENTER" GridPane.rowIndex="1">
                <children>
-                  <Button fx:id="oabButton" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#oabButtonClicked" text="One-Armed-Bandit">
+                  <Button id="redButton" fx:id="oabButton" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#oabButtonClicked" text="One-Armed-Bandit">
                      <graphic>
                         <Button mnemonicParsing="false" onAction="#oabHelpButtonClicked" text="?" />
                      </graphic>
@@ -44,7 +43,7 @@
             </VBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2">
                <children>
-                  <Button fx:id="rouletteButton" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#rouletteButtonClicked" text="Roulette">
+                  <Button id="redButton" fx:id="rouletteButton" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#rouletteButtonClicked" text="Roulette">
                      <graphic>
                         <Button mnemonicParsing="false" onAction="#rouletteHelpButtonClicked" text="?" />
                      </graphic>
@@ -53,7 +52,7 @@
             </VBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
-                  <Button fx:id="homeworkButton" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#homeworkButtonClicked" text="Homework-Simulator">
+                  <Button id="redButton" fx:id="homeworkButton" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#homeworkButtonClicked" text="Homework-Simulator">
                      <graphic>
                         <Button mnemonicParsing="false" onAction="#homeworkHelpButtonClicked" text="?" />
                      </graphic>
@@ -69,11 +68,7 @@
    <top>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Casino World" textFill="#b20f0f">
-               <font>
-                  <Font name="System Italic" size="28.0" />
-               </font>
-            </Label>
+            <Label id="heading" text="Casino World" />
          </children>
       </HBox>
    </top>

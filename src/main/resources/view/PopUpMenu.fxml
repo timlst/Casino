@@ -8,20 +8,23 @@
 
 <BorderPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controllers.PopUpMenuController">
    <center>
-      <Label fx:id="infoLabel" alignment="CENTER" text="InfoText" textFill="#b20f0f" BorderPane.alignment="CENTER" />
+      <Label fx:id="infoLabel" alignment="CENTER" text="InfoText" BorderPane.alignment="CENTER">
+         <font>
+            <Font size="12.0" />
+         </font></Label>
    </center>
    <top>
-      <Label text="Casino World" textFill="#b20f0f" BorderPane.alignment="CENTER">
+      <Label id="heading" text="Casino World" textFill="MAROON" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets right="10.0" top="20.0" />
          </BorderPane.margin>
          <font>
-            <Font name="System Italic" size="28.0" />
+            <Font name="System Italic" size="12.0" />
          </font>
       </Label>
    </top>
    <bottom>
-      <Button fx:id="closeButton" mnemonicParsing="false" onAction="#closeButtonClicked" text="Close" BorderPane.alignment="CENTER">
+      <Button id="redButton" fx:id="closeButton" mnemonicParsing="false" onAction="#closeButtonClicked" text="Close" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets bottom="20.0" />
          </BorderPane.margin>

@@ -31,14 +31,18 @@ public class Main extends Application{
     popUpMenuController = loader.getController();
     popUpMenuController.setInfoText(WELCOME_TEXT);
 
-    popUpMenuController.setReturnScene(mainMenu);
-    mainMenuController.setPopUpMenuScene(popUpMenu);
-    mainMenuController.setPopUpMenuController(popUpMenuController);
-
     //OAB
     loader = new FXMLLoader();
     Pane oabPane = loader.load(getClass().getResource("/main/resources/view/Scene.fxml").openStream());
     oab = new Scene(oabPane);
+
+    popUpMenu.getStylesheets().addAll(getClass().getResource("/main/resources/css/application.css").toExternalForm());
+    mainMenu.getStylesheets().addAll(getClass().getResource("/main/resources/css/application.css").toExternalForm());
+    oab.getStylesheets().addAll(getClass().getResource("/main/resources/css/application.css").toExternalForm());
+
+    popUpMenuController.setReturnScene(mainMenu);
+    mainMenuController.setPopUpMenuScene(popUpMenu);
+    mainMenuController.setPopUpMenuController(popUpMenuController);
 
     mainMenuController.setOABScene(oab);
 

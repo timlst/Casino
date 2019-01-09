@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="578.0" prefWidth="631.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controllers.OABController">
+<BorderPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="578.0" prefWidth="631.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controllers.OABController">
    <center>
       <StackPane BorderPane.alignment="CENTER">
          <children>
@@ -28,7 +28,7 @@
                         <ImageView pickOnBounds="true" preserveRatio="true" />
                         <AnchorPane>
                            <children>
-                              <Button layoutX="74.0" layoutY="40.0" mnemonicParsing="false" onAction="#stopL" text="Stop" />
+                              <Button id="redButton" layoutX="74.0" layoutY="40.0" mnemonicParsing="false" onAction="#stopL" text="Stop" />
                            </children>
                         </AnchorPane>
                      </children>
@@ -43,7 +43,7 @@
                         <ImageView pickOnBounds="true" preserveRatio="true" />
                         <AnchorPane>
                            <children>
-                              <Button layoutX="74.0" layoutY="40.0" mnemonicParsing="false" onAction="#stopM" text="Stop" />
+                              <Button id="redButton" layoutX="74.0" layoutY="40.0" mnemonicParsing="false" onAction="#stopM" text="Stop" />
                            </children>
                         </AnchorPane>
                      </children>
@@ -58,7 +58,7 @@
                         <ImageView pickOnBounds="true" preserveRatio="true" />
                         <AnchorPane>
                            <children>
-                              <Button layoutX="74.0" layoutY="40.0" mnemonicParsing="false" onAction="#stopR" text="Stop" />
+                              <Button id="redButton" layoutX="74.0" layoutY="40.0" mnemonicParsing="false" onAction="#stopR" text="Stop" />
                            </children>
                         </AnchorPane>
                      </children>
@@ -70,11 +70,11 @@
                      <children>
                         <Pane layoutX="-1.0" prefHeight="578.0" prefWidth="100.0">
                            <children>
-                              <Button fx:id="spin" defaultButton="true" disable="true" layoutX="24.0" layoutY="172.0" mnemonicParsing="false" onAction="#shuffle" text="Spin it" />
-                              <Button layoutX="19.0" layoutY="539.0" mnemonicParsing="false" onAction="#quit" text="Quit" />
+                              <Button id="redButton" fx:id="spin" defaultButton="true" disable="true" layoutX="24.0" layoutY="172.0" mnemonicParsing="false" onAction="#shuffle" text="Spin it" />
+                              <Button id="redButton" layoutX="19.0" layoutY="539.0" mnemonicParsing="false" onAction="#quit" text="Quit" />
                               <Pane layoutY="14.0" prefHeight="79.0" prefWidth="100.0">
                                  <children>
-                                    <Text layoutX="12.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Punktzahl:">
+                                    <Text id="textRed" fill="MAROON" layoutX="12.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Punktzahl:">
                                        <font>
                                           <Font size="17.0" />
                                        </font>
@@ -84,7 +84,7 @@
                               </Pane>
                               <Pane layoutY="93.0" prefHeight="79.0" prefWidth="100.0">
                                  <children>
-                                    <Text layoutX="12.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Einsatz:">
+                                    <Text id="textRed" layoutX="12.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Einsatz:">
                                        <font>
                                           <Font size="17.0" />
                                        </font>
