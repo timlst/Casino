@@ -47,6 +47,7 @@ public class Main extends Application{
     Pane oabPane = loader.load(getClass().getResource("/main/resources/view/Scene.fxml").openStream());
     oab = new Scene(oabPane);
 
+    startScene.getStylesheets().addAll(getClass().getResource("/main/resources/css/application.css").toExternalForm());
     popUpMenu.getStylesheets().addAll(getClass().getResource("/main/resources/css/application.css").toExternalForm());
     mainMenu.getStylesheets().addAll(getClass().getResource("/main/resources/css/application.css").toExternalForm());
     oab.getStylesheets().addAll(getClass().getResource("/main/resources/css/application.css").toExternalForm());

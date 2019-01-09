@@ -116,7 +116,7 @@
                   <Image url="@/main/resources/images/loggggo.png" />
                </image>
             </ImageView>
-            <Label text="Mistress Green" textFill="#b20f0f">
+            <Label text="Mistress Green" id="heading" textFill="#b20f0f">
                <font>
                   <Font size="28.0" />
                </font>
