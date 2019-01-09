@@ -133,33 +133,27 @@ public class ReelControl {
 		return r;
 	}
 
-	/*
-	 * Unimplementiert WIP
-	 */
+
 	public void handleResult(int bet) {
 			List<ReelSymbol> result = getBoardState(); //Kann null sein wenn das Ding gerade noch dreht
+			Double mult = auswertung(result);
+			if(mult == null) return;
 			winBlink();
-			ReelSymbol l = result.get(0);
-			ReelSymbol m = result.get(1);
-			ReelSymbol r = result.get(2);
-			/*
-			if(l == m && m == r)
-			{
-				int multipl = l.getPoints();
-				if(multipl != 0 || multipl != 1000)
-				{
-					gameScore = gameScore + activeBet*multipl;
-				}
-				else if (multipl == 0) freeSpin += 4;
-				else gameScore += jackpot;
-			}*/
-
-			//ANMERKUNG TIM: Ich verstehe das Konzept noch nicht so ganz: Man gewinnt nur wenn drei gleiche kommen? Das ist seeeehr unwahrscheinlich tbh
-			//Temporaere Gewinnmethode
-			//Deswegen ist es jetzt so dass jede Person einen Multiplikator gibt, alle 3 Walzen werden addiert, durch 3 geteilt und anschliessend mal den Einsatz zurueckgegeben
-			double mult = (l.getPoints()+m.getPoints()+r.getPoints())/3;
-			//System.out.println(mult);
-			refreshGamescore((int)(mult*activeBet));
+			refreshGamescore((int)(mult*bet));
+	}
+	
+	private Double auswertung(List<ReelSymbol> result){
+		if(result==null) return null;
+		ReelSymbol l = result.get(0);
+		ReelSymbol m = result.get(1);
+		ReelSymbol r = result.get(2);
+		if(l.equals(m) && m.equals(r)){
+			return l.getThree();
+		}
+		else if(l.equals(m) || m.equals(r)){
+			return m.getTwo();
+		}
+		else return null;
 	}
 
 	/*
