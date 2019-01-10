@@ -109,7 +109,7 @@
             </HBox>
             <Rectangle fx:id="rectangle" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="200.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" width="600.0" StackPane.alignment="CENTER">
                <StackPane.margin>
-                  <Insets bottom="20.0" left="25.0" right="125.0" />
+                  <Insets bottom="30.0" left="25.0" right="125.0" />
                </StackPane.margin>
             </Rectangle>
             <ImageView id="gifViewer" fx:id="gifViewer" fitHeight="700.0" fitWidth="700.0" preserveRatio="true" />
