@@ -201,9 +201,7 @@ public class ReelControl {
 	}
 	
 	private void playGif(Image g) {
-		System.out.println("GIF BEING PLAYED");
 		gifViewer.setVisible(true);
-		System.out.println(g==null);
 		gifViewer.setImage(g);
 		KeyFrame kf1 = new KeyFrame(Duration.millis(2500), x -> {
 			gifViewer.setVisible(false);
