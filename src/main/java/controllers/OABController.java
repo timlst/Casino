@@ -17,7 +17,8 @@ import javafx.scene.control.TextFormatter;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
-
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import main.java.oab.ReelControl;
 import main.java.oab.ReelSymbol;
 import main.java.oab.Reel;
@@ -34,6 +35,7 @@ public class OABController implements Initializable{
 	TextField txtEinsatz;
 	@FXML
 	Button spin;
+	MediaPlayer mediaPlayer;
 	
 	int bet;
 	int points;
@@ -95,6 +97,10 @@ public class OABController implements Initializable{
 	}
 	@FXML
 	private void shuffle() {
+		
+	     playSound("/main/resources/sounds/Arm_zieher.wav"); 
+	     playSound("/main/resources/sounds/wdr.wav");     
+		
 		if(!r.isRunning()) r.startSpinning(bet);
 		spin.setDisable(true);
 		txtEinsatz.clear();
@@ -103,14 +109,20 @@ public class OABController implements Initializable{
 
 	@FXML
 	private void stopL() {
+	   stopSound("/main/resources/sounds/wdr.wav");
+	   playSound("/main/resources/sounds/Walzen_stopp.wav");
 		r.stopSpin(r.l);
 	}
 	@FXML
 	private void stopM() {
+	  stopSound("/main/resources/sounds/wdr.wav");
+	  playSound("/main/resources/sounds/Walzen_stopp.wav");
 		r.stopSpin(r.m);
 	}
 	@FXML
 	private void stopR() {
+	  stopSound("/main/resources/sounds/wdr.wav");
+	  playSound("/main/resources/sounds/Walzen_stopp.wav");
 		r.stopSpin(r.r);
 	}
 	@FXML
@@ -130,4 +142,22 @@ public class OABController implements Initializable{
 		else if (r.hasFreeSpin()) return true;
 		else return Integer.parseInt(txtEinsatz.getText())<=Integer.parseInt(lblPunkte.getText());
 	}
+	
+	  private void playSound(String soundPath)
+	  {
+	      URL musicURL = getClass().getResource(soundPath);     
+
+	      Media sound = new Media(musicURL.toString());
+	       mediaPlayer = new MediaPlayer(sound);
+	       mediaPlayer.play();
+	    }
+	     private void stopSound(String soundPath)
+	  {
+	      URL musicURL = getClass().getResource(soundPath);     
+
+	      Media sound = new Media(musicURL.toString());
+	       mediaPlayer = new MediaPlayer(sound);
+	       mediaPlayer.stop();
+	    }
+
 }

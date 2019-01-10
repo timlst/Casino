@@ -24,7 +24,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="578.0" prefWidth="631.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controllers.OABController">
+<BorderPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="578.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controllers.OABController">
    <center>
       <StackPane BorderPane.alignment="CENTER">
          <children>
@@ -109,7 +109,7 @@
             </HBox>
             <Rectangle fx:id="rectangle" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="200.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" width="600.0" StackPane.alignment="CENTER">
                <StackPane.margin>
-                  <Insets bottom="20.0" left="25.0" right="125.0" />
+                  <Insets bottom="30.0" left="25.0" right="125.0" />
                </StackPane.margin>
             </Rectangle>
          </children>
