@@ -24,7 +24,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="578.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controllers.OABController">
+<BorderPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="578.0" prefWidth="631.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controllers.OABController">
    <center>
       <StackPane BorderPane.alignment="CENTER">
          <children>
@@ -112,6 +112,7 @@
                   <Insets bottom="30.0" left="25.0" right="125.0" />
                </StackPane.margin>
             </Rectangle>
+            <ImageView id="gifViewer" fx:id="gifViewer" fitHeight="700.0" fitWidth="700.0" preserveRatio="true" />
          </children>
       </StackPane>
    </center>
