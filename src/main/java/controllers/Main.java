@@ -44,7 +44,7 @@ public class Main extends Application{
     startAnimationController.setNext(popUpMenu);
     //OAB
     loader = new FXMLLoader();
-    Pane oabPane = loader.load(getClass().getResource("/main/resources/view/Scene.fxml").openStream());
+    Pane oabPane = loader.load(getClass().getResource("/main/resources/view/OABScene.fxml").openStream());
     oab = new Scene(oabPane);
 
     startScene.getStylesheets().addAll(getClass().getResource("/main/resources/css/application.css").toExternalForm());

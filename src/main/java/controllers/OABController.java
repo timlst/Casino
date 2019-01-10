@@ -14,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
@@ -34,6 +35,9 @@ public class OABController implements Initializable{
 	TextField txtEinsatz;
 	@FXML
 	Button spin;
+	
+	@FXML
+	ImageView gifViewer;
 	
 	int bet;
 	int points;
@@ -57,8 +61,8 @@ public class OABController implements Initializable{
 		Reel left = new Reel(reelLeft);
 		Reel middle = new Reel(reelMiddle);
 		Reel right = new Reel(reelRight);
-		r = new ReelControl(left,middle,right,symbols, lblPunkte, txtEinsatz, 500);
-		
+
+		r = new ReelControl(left,middle,right,symbols, lblPunkte, txtEinsatz, 500, gifViewer);
 		//UNGEFILTERTER USER INPUT IST NICHT GUT
 		DecimalFormat format = new DecimalFormat( "#0000" );
 		txtEinsatz.setTextFormatter( new TextFormatter<>(c ->{if ( c.getControlNewText().isEmpty() )return c;
